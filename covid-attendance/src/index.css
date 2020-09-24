@@ -1,0 +1,14 @@
+
+#list {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: start;
+    align-content: center;
+    column-gap: 10px;
+    row-gap: 10px;
+    padding-top: 50px;
+}
+#list > {
+    font-size: large;
+    align-content: center;
+}
