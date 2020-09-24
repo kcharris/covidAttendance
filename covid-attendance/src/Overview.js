@@ -9,7 +9,7 @@ class Overview extends React.Component {
 
         this.state = {
             groupBool: false,
-            groupColor: 'blue',
+            groupColor: 'lightblue',
             students: (() => {
                 let newDict = []
                 for (let i = 0; i < 20; i++) {
@@ -28,6 +28,7 @@ class Overview extends React.Component {
         this.handleAttendanceClick = this.handleAttendanceClick.bind(this);
         this.handleGroupClick = this.handleGroupClick.bind(this);
         this.handleStudentGroupClick = this.handleStudentGroupClick.bind(this);
+        this.handleColorChange = this.handleColorChange.bind(this)
     }
     handleAttendanceClick() {
         this.setState({
@@ -59,18 +60,38 @@ class Overview extends React.Component {
             })
         })
     }
+    handleColorChange(e){
+        this.setState({
+            groupColor: e.target.value
+        })
+    }
 
     render() {
         let nList = []
+        let select = ""
         if (this.state.students.length !== 0) {
             for (let i = 0; i < this.state.students.length; i++) {
                 nList.push(<Student student={this.state.students[i]} gBool={this.state.groupBool} key={this.state.students[i].id} handleStudentGroupClick={this.handleStudentGroupClick} />)
             }
         }
+        if (this.state.groupBool){
+            select = <select value={this.state.groupColor} onChange={this.handleColorChange}>
+                <option value="yellow">Yellow</option>
+                <option value="sienna">Sienna</option>
+                <option value="lightblue">Light Blue</option>
+                <option value="purple">purple</option>
+                <option value="orange">Orange</option>
+                <option value="tan">Tan</option>
+            </select>
+        }
+        else{
+            select = <div></div>
+        }
 
         return (
             <div>
                 <OptionBar onAClick={this.handleAttendanceClick} onGClick={this.handleGroupClick} />
+                {select}
                 {nList}
             </div>
         )
