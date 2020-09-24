@@ -103,7 +103,7 @@ class Overview extends React.Component {
         return (
             <div>
                 <OptionBar onAClick={this.handleAttendanceClick} onGClick={this.handleGroupClick} />
-                <button onClick={this.resetColor}>Reset Color</button>
+                <button onClick={this.resetColor}>Reset Group Color</button>
                 {select}
                 <div id="list">
                     {nList}
